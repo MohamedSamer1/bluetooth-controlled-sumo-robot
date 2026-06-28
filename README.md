@@ -284,11 +284,16 @@ After design, simulation, and validation were complete, the robot was manufactur
 | Controller | ESP32 |
 | Drive System | Differential drive |
 | Communication | Bluetooth |
-| Battery | Li-ion |
+| Battery | 14.8V Li-ion |
 | Motor Driver | L298N |
+| Chassis | 3D printed |
 | CAD Software | Autodesk Inventor |
 | Simulation | MATLAB / Simulink |
 | Circuit Validation | Proteus |
+| **Top Speed** | **0.11 m/s** |
+| **Theoretical Push Force** | **35.2 N** |
+| **Response Delay** | **0.25 s** |
+| **Robot Weight** | **1.4 kg** |
 
 ---
 
