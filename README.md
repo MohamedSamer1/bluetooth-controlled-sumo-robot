@@ -114,7 +114,7 @@ The chassis was modeled in **Autodesk Inventor** using a modular approach for ea
 - Low-profile geometry that can slide underneath an opponent's chassis
 - Compact footprint for maneuverability
 - Symmetrical weight distribution
-- Easy access to  electronics
+- Easy access to internal electronics
 - Rigid construction to absorb impact loads
 
 The front **wedge** — one of the most important parts on any sumo robot — is angled to lift the opponent's front wheels, reduce their traction, transfer pushing force efficiently into the chassis, and shield the robot from direct frontal impacts. The attack angle balances engagement against ground clearance during normal movement.
@@ -126,7 +126,7 @@ The front **wedge** — one of the most important parts on any sumo robot — is
 > **Figure 1:** Complete CAD assembly of the Bluetooth-Controlled Sumo Robot.
 
 <p align="center">
-<img src="images/front-view.png" width="70%">
+<img src="images/Sumo-bot-assembly-drawing.png" width="70%">
 </p>
 
 ### Wheel Configuration & Weight Distribution
@@ -136,7 +136,7 @@ The robot uses a **differential-drive** layout: two independently driven DC moto
 Weight distribution is just as critical as the drivetrain itself. The battery pack sits close to the drive wheels to increase normal force on the tires (improving traction and pushing force), and the heaviest components — motors and battery — are mounted as low as possible to keep the center of gravity down and improve stability during aggressive pushing.
 
 <p align="center">
-<img src="images/exploded-view.png" width="90%">
+<img src="images/robot-assembly-cad-pic.png" width="90%">
 </p>
 
 > **Figure 2:** Exploded view of the mechanical assembly.
@@ -363,19 +363,36 @@ bluetooth-controlled-sumo-robot
 ├── LICENSE
 │
 ├── cad/
-│   ├── assemblies/
-│   ├── parts/
-│   └── drawings/
+│   ├── MOTOR.dwg
+│   ├── MOTOR.ipt
+│   ├── robot-wheel.dwg
+│   ├── robot-wheel.ipt
+│   ├── Sumo-bot-assembly-drawing.dwg
+│   ├── sumo-robot-body.ipt
+│   └── sumo-robot.dwg
 │
 ├── electronics/
-│   ├── schematic/
-│   ├── pcb/
-│   └── wiring/
+│   ├── schematic.pdf
+│   └── wiring.png
 │
 ├── firmware/
-│   └── esp32/
+│   ├── code/
+│   ├── sumo-bot-code.ino
+│   └── bluetooth-controlled-sumo-robot-simulink.slx
 │
 ├── images/
+│   ├── hero-banner.png
+│   ├── cad-render.png
+│   ├── chassis.png
+│   ├── internala-layout.png
+│   ├── MOTOR.png
+│   ├── proteus.png
+│   ├── robot-assembly-cad-pic.png
+│   ├── robot-wheel.png
+│   ├── robot.png
+│   ├── schematic.png
+│   ├── simulink.png
+│   └── Sumo-bot-assembly-drawing.png
 │
 └── docs/
     └── Project_Report.pdf
@@ -383,9 +400,9 @@ bluetooth-controlled-sumo-robot
 
 | Directory | Description |
 |-----------|-------------|
-| `cad/` | Autodesk Inventor assemblies, parts, and drawings |
-| `electronics/` | Schematics, PCB files, and wiring diagrams |
-| `firmware/` | ESP32 source code |
+| `cad/` | Autodesk Inventor parts and drawing files |
+| `electronics/` | Schematic (PDF) and wiring diagram |
+| `firmware/` | ESP32 Arduino code and Simulink model |
 | `images/` | CAD renders, prototype photos, and diagrams |
 | `docs/` | Project report and supporting calculations |
 
