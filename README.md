@@ -130,9 +130,7 @@ The robot follows a modular mechatronic architecture composed of four primary su
 Motor Driver
       │
  DC Motors
-      │
- Differential Drive
-      │
+      │      │
  Robot Motion
 ```
 
