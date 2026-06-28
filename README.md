@@ -274,7 +274,7 @@ The electronic control system (motor driver behavior, ESP32 control logic, wirin
 After design, simulation, and validation were complete, the robot was manufactured and assembled into a fully functional prototype integrating all mechanical, electrical, and software subsystems.
 
 <p align="center">
-<img src="images/robot.jpg" width="80%">
+<img src="images/robot.png" width="80%">
 </p>
 
 > **Figure 9:** Final assembled robot.
@@ -319,7 +319,7 @@ After design, simulation, and validation were complete, the robot was manufactur
 
 | CAD Design | Prototype |
 |------------|-----------|
-| <img src="images/cad-render.png" width="350"> | <img src="images/robot.jpg" width="350"> |
+| <img src="images/cad-render.png" width="350"> | <img src="images/robot.png" width="350"> |
 
 </p>
 
