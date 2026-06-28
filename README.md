@@ -114,7 +114,7 @@ The chassis was modeled in **Autodesk Inventor** using a modular approach for ea
 - Low-profile geometry that can slide underneath an opponent's chassis
 - Compact footprint for maneuverability
 - Symmetrical weight distribution
-- Easy access to internal electronics
+- Easy access to  electronics
 - Rigid construction to absorb impact loads
 
 The front **wedge** — one of the most important parts on any sumo robot — is angled to lift the opponent's front wheels, reduce their traction, transfer pushing force efficiently into the chassis, and shield the robot from direct frontal impacts. The attack angle balances engagement against ground clearance during normal movement.
@@ -238,7 +238,7 @@ The full robot was modeled in **Autodesk Inventor** before any physical fabricat
 > **Figure 5:** Chassis design — built for rigidity, low weight, and easy maintenance.
 
 <p align="center">
-<img src="images/internal-layout.png" width="85%">
+<img src="images/internala-layout.png" width="85%">
 </p>
 
 > **Figure 6:** Internal electronics layout — planned to reduce cable clutter, improve accessibility, and keep weight balanced.
