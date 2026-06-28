@@ -170,3 +170,339 @@ Motor Driver
 > Rather than treating the robot as an electronics project alone, this work follows a complete mechatronic engineering workflow where mechanical design, electronics, embedded programming, simulation, and validation are developed together to achieve a balanced and competitive robotic platform.
 
 ---
+
+# ⚙️ Mechanical Design
+
+## Design Philosophy
+
+The mechanical design of the robot was driven by three primary objectives:
+
+- Maximize pushing capability
+- Maintain a low center of gravity
+- Minimize overall weight while preserving structural rigidity
+
+Rather than designing only for aesthetics, every mechanical component was selected or designed to improve the robot's performance during sumo matches.
+
+---
+
+## Chassis Design
+
+The chassis was designed in **Autodesk Inventor** using a modular approach that simplifies manufacturing, assembly, and maintenance.
+
+### Design Considerations
+
+- Low-profile geometry to slide underneath opponents.
+- Compact footprint for improved maneuverability.
+- Symmetrical weight distribution.
+- Easy access to electronics.
+- Rigid structure capable of withstanding impact loads.
+
+<p align="center">
+<img src="images/cad-render.png" width="85%">
+</p>
+
+> **Figure 1:** Complete CAD assembly of the Bluetooth-Controlled Sumo Robot.
+
+---
+
+## Wedge Design
+
+One of the most important components in a sumo robot is the front wedge.
+
+The wedge was designed to:
+
+- Lift the opponent's front wheels.
+- Reduce the opponent's traction.
+- Transfer pushing force efficiently.
+- Prevent direct frontal collisions with the chassis.
+
+The attack angle was selected to maximize engagement while maintaining ground clearance during movement.
+
+<p align="center">
+<img src="images/front-view.png" width="70%">
+</p>
+
+---
+
+## Wheel Configuration
+
+The robot utilizes a **differential-drive** configuration consisting of:
+
+- Two independently driven DC motors
+- One free-rotating caster wheel
+- High-traction drive wheels
+
+This configuration offers:
+
+- Zero-radius turning
+- Simple control architecture
+- High maneuverability
+- Reliable navigation inside the sumo arena
+
+<p align="center">
+<img src="images/exploded-view.png" width="90%">
+</p>
+
+---
+
+## Weight Distribution
+
+Weight distribution plays a critical role in sumo robotics.
+
+The battery pack was intentionally positioned close to the drive wheels to increase the normal force acting on the tires, thereby improving traction and maximizing the available pushing force.
+
+Heavy components such as the motors and battery were placed as low as possible to reduce the center of gravity and improve stability during aggressive pushing.
+
+---
+
+## Mechanical Highlights
+
+- ✅ Low-profile wedge chassis
+- ✅ Modular mechanical assembly
+- ✅ Lightweight construction
+- ✅ Optimized center of gravity
+- ✅ High traction wheel placement
+- ✅ Compact mechanical layout
+
+---
+
+# 🔌 Electronics Design
+
+The electronic system was designed to provide reliable wireless control while delivering sufficient power to the drive motors.
+
+The design consists of four major subsystems:
+
+- Control
+- Power
+- Motor Drive
+- Communication
+
+---
+
+## System Components
+
+| Component | Function |
+|------------|----------|
+| ESP32 | Main controller |
+| L298N Motor Driver | Motor power control |
+| DC Geared Motors | Robot propulsion |
+| Li-ion Battery Pack | Power supply |
+| Bluetooth | Wireless communication |
+
+---
+
+## Electronic Architecture
+
+```text
+Battery
+   │
+   ▼
+L298N Motor Driver
+   ▲
+   │
+ESP32 Controller
+   ▲
+Bluetooth Communication
+   ▲
+Smartphone
+```
+
+---
+
+## ESP32 Controller
+
+The ESP32 serves as the central processing unit of the robot.
+
+Its responsibilities include:
+
+- Reading Bluetooth commands
+- Processing user input
+- Generating PWM signals
+- Controlling motor direction
+- Coordinating differential-drive movement
+
+The ESP32 was selected because it provides:
+
+- Built-in Bluetooth
+- High processing performance
+- Low power consumption
+- Multiple PWM outputs
+- Excellent Arduino ecosystem support
+
+---
+
+## Motor Driver
+
+The robot uses an **L298N dual H-Bridge motor driver**.
+
+Its primary functions include:
+
+- Bidirectional motor control
+- PWM speed regulation
+- Independent left/right motor control
+- High-current switching
+
+---
+
+## Power System
+
+The robot is powered by a rechargeable Li-ion battery pack.
+
+The power system was designed to provide:
+
+- Stable voltage
+- High current capability
+- Long operating duration
+- Reliable performance under heavy motor loads
+
+Power calculations were performed during the design phase to verify that the selected battery could safely support the expected current consumption.
+
+---
+
+## Circuit Design
+
+The electrical circuit was first developed and validated using **Proteus**, allowing verification of wiring and motor control logic before physical assembly.
+
+The PCB and schematic were then organized using **KiCad**, ensuring a clean and maintainable electrical design.
+
+<p align="center">
+<img src="images/schematic.png" width="85%">
+</p>
+
+> **Figure 2:** Electrical schematic of the control system.
+
+---
+
+# 🧠 Control System
+
+The robot utilizes a **Bluetooth-based differential-drive control system**.
+
+The operator sends movement commands from a smartphone application.
+
+These commands are transmitted wirelessly to the ESP32, which interprets the incoming data and generates the appropriate PWM signals for each motor.
+
+---
+
+## Differential Drive
+
+Robot motion is achieved by independently controlling the left and right motors.
+
+| Left Motor | Right Motor | Motion |
+|------------|-------------|---------|
+| Forward | Forward | Forward |
+| Reverse | Reverse | Backward |
+| Forward | Reverse | Rotate Right |
+| Reverse | Forward | Rotate Left |
+| Stop | Stop | Stop |
+
+This control strategy enables smooth turning, rapid maneuverability, and precise positioning inside the sumo arena.
+
+---
+
+## Motion Flow
+
+```text
+Smartphone
+
+↓
+
+Bluetooth
+
+↓
+
+ESP32
+
+↓
+
+Motor Driver
+
+↓
+
+DC Motors
+
+↓
+
+Robot Motion
+```
+
+---
+
+# 💻 Software Implementation
+
+The firmware was developed using the **Arduino IDE**.
+
+The software architecture follows a modular design to improve readability, debugging, and future expansion.
+
+The main software modules include:
+
+- Bluetooth communication
+- Command processing
+- Motor control
+- PWM generation
+- Safety handling
+
+---
+
+## Software Workflow
+
+```text
+Initialize Hardware
+
+↓
+
+Connect Bluetooth
+
+↓
+
+Receive Command
+
+↓
+
+Process Input
+
+↓
+
+Generate PWM
+
+↓
+
+Drive Motors
+
+↓
+
+Wait for Next Command
+```
+
+---
+
+## Key Features
+
+- Wireless Bluetooth operation
+- Differential-drive algorithm
+- PWM motor speed control
+- Low-latency response
+- Modular firmware architecture
+- Expandable for autonomous navigation
+
+---
+
+# 📐 Engineering Calculations
+
+Engineering calculations were performed before manufacturing to verify that the design would satisfy the desired performance requirements.
+
+The analytical work included:
+
+- Motor torque estimation
+- Pushing force analysis
+- Robot velocity estimation
+- Battery capacity calculations
+- Power consumption estimation
+- Differential-drive kinematics
+
+These calculations guided the selection of motors, battery capacity, gear ratio, and overall mechanical configuration.
+
+Detailed derivations and mathematical analysis are available in the accompanying project report located in the **docs/** directory.
+
+> Engineering decisions throughout this project were supported by analytical calculations rather than trial-and-error, ensuring that the final design achieved an effective balance between performance, efficiency, and reliability.
+
+---
