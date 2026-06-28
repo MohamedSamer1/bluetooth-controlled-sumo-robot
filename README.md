@@ -712,3 +712,223 @@ Throughout the project, several important engineering principles were reinforced
 > This project demonstrates the successful application of mechanical engineering, embedded systems, electronics, control theory, CAD design, and simulation to develop a complete mechatronic system. Rather than focusing on a single discipline, the project highlights the integration of multiple engineering domains to solve a real-world robotics challenge.
 
 ---
+# 🚧 Challenges & Engineering Decisions
+
+Every engineering project presents design trade-offs. Throughout the development of this robot, several technical challenges were encountered that required careful analysis and engineering judgment.
+
+---
+
+## Mechanical Challenges
+
+### Weight vs. Traction
+
+Increasing the robot's weight improves traction and pushing force but also places greater demands on the motors and battery.
+
+To achieve the best balance, the chassis was designed to remain lightweight while concentrating the heaviest components directly above the drive wheels.
+
+---
+
+### Center of Gravity
+
+An elevated center of gravity can reduce stability during pushing contests.
+
+To address this issue:
+
+- The battery pack was positioned as low as possible.
+- The motors were mounted close to the base.
+- Heavy components were distributed symmetrically.
+
+This improved stability during aggressive maneuvers.
+
+---
+
+## Electrical Challenges
+
+The drive motors draw significantly higher current during startup than during normal operation.
+
+Proper battery selection and motor driver sizing were therefore essential to ensure:
+
+- Reliable startup
+- Stable voltage
+- Continuous operation
+- Safe power delivery
+
+---
+
+## Software Challenges
+
+Bluetooth communication had to remain responsive while continuously updating motor outputs.
+
+The firmware was structured to:
+
+- Minimize communication latency
+- Prevent blocking code
+- Maintain smooth motor control
+- Allow future feature expansion
+
+---
+
+## Engineering Decisions
+
+Several important engineering decisions shaped the final design:
+
+- Differential drive selected for simplicity and maneuverability.
+- ESP32 chosen for integrated Bluetooth capability.
+- Modular chassis designed for easy maintenance.
+- CAD-first workflow adopted to reduce manufacturing errors.
+- Simulation completed before physical assembly to validate system behavior.
+
+---
+
+# 🚀 Future Improvements
+
+Although the current robot satisfies the project objectives, several enhancements could significantly improve its performance.
+
+### Mechanical
+
+- Aluminum or carbon-fiber chassis
+- Improved wheel materials
+- Adjustable wedge geometry
+- Reduced overall weight
+
+---
+
+### Electronics
+
+- Custom PCB
+- Higher-efficiency motor driver
+- Battery monitoring system
+- Integrated voltage regulation
+
+---
+
+### Software
+
+- PID speed control
+- Closed-loop motor feedback
+- Automatic braking
+- Configurable drive modes
+
+---
+
+### Robotics & AI
+
+Future versions of the robot could transition from manual operation to autonomous behavior through the integration of:
+
+- Ultrasonic sensors
+- Infrared sensors
+- Computer vision
+- Line detection
+- Obstacle avoidance
+- ROS 2
+- Autonomous opponent detection
+
+---
+
+# 📁 Repository Structure
+
+```text
+bluetooth-controlled-sumo-robot
+│
+├── README.md
+├── LICENSE
+│
+├── cad/
+│   ├── assemblies/
+│   ├── parts/
+│   └── drawings/
+│
+├── electronics/
+│   ├── schematic/
+│   ├── pcb/
+│   └── wiring/
+│
+├── firmware/
+│   └── esp32/
+│
+├── images/
+│
+└── docs/
+    └── Project_Report.pdf
+```
+
+---
+
+# 📂 Project Files
+
+The repository contains all resources required to understand and reproduce the project.
+
+| Directory | Description |
+|-----------|-------------|
+| `cad/` | Autodesk Inventor assemblies, parts, and drawings |
+| `electronics/` | Schematics, PCB files, and wiring diagrams |
+| `firmware/` | ESP32 source code |
+| `images/` | CAD renders, prototype photos, and diagrams |
+| `docs/` | Project report and supporting documentation |
+
+---
+
+# 📚 References
+
+The development of this project was supported by technical documentation, engineering references, and software manuals.
+
+- ESP32 Technical Documentation
+- Arduino Documentation
+- Autodesk Inventor Documentation
+- MATLAB Documentation
+- Simulink Documentation
+- KiCad Documentation
+- Proteus Documentation
+
+Additional analytical calculations and design methodology are documented in the accompanying project report.
+
+---
+
+# 👥 Team
+
+This project was completed as part of the **Mechatronics Design** course at **Modern Sciences and Arts University (MSA University)**.
+
+### Team Members
+
+- Mohamed Samer
+- Ahmed Ibrahim
+- Ahmed Hesham
+- Omar Mahmoud
+- Youssef Mohamed
+
+---
+
+# 🙏 Acknowledgements
+
+The team would like to thank the faculty members and teaching assistants of the Mechatronics Engineering Department at **MSA University** for their guidance and continuous support throughout the development of this project.
+
+---
+
+# 📄 License
+
+This project is released under the **MIT License**.
+
+See the [LICENSE](LICENSE) file for more information.
+
+---
+
+# ⭐ Support
+
+If you found this project interesting or helpful:
+
+- ⭐ Star this repository
+- 🍴 Fork the project
+- 💡 Share your feedback
+- 🤝 Connect with me on LinkedIn
+
+---
+
+<p align="center">
+
+### Built with ❤️ by Mohamed Samer
+
+**Mechatronics Engineering Student**
+
+*Modern Sciences and Arts University (MSA University)*
+
+</p>
