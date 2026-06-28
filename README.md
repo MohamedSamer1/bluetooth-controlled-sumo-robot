@@ -6,7 +6,7 @@
 
 <p align="center">
 A high-performance ESP32-powered sumo robot engineered for competitive robotics.<br>
-Designed through a complete engineering workflow including mechanical design,
+Designed through a complete engineering workflow spanning mechanical design,
 embedded systems, electronics integration, mathematical modeling, and system validation.
 </p>
 
@@ -24,178 +24,100 @@ embedded systems, electronics integration, mathematical modeling, and system val
 
 ---
 
-# 📑 Table of Contents
+## 📑 Table of Contents
 
-- [📖 Project Overview](#-project-overview)
-- [🎯 Design Objectives](#-design-objectives)
-- [📋 Engineering Requirements](#-engineering-requirements)
-- [🏗️ System Architecture](#️-system-architecture)
-- [⚙️ Mechanical Design](#️-mechanical-design)
-- [🔌 Electronics Design](#-electronics-design)
-- [🧠 Control System](#-control-system)
-- [💻 Software Implementation](#-software-implementation)
-- [📐 Engineering Calculations](#-engineering-calculations)
-- [🖼️ CAD Gallery](#️-cad-gallery)
-- [🧪 Simulation & Validation](#-simulation--validation)
-- [🤖 Final Prototype](#-final-prototype)
-- [📊 Results & Discussion](#-results--discussion)
-- [🚧 Challenges](#-challenges)
-- [🚀 Future Improvements](#-future-improvements)
-- [📁 Repository Structure](#-repository-structure)
-- [📚 References](#-references)
-- [👨‍💻 Team](#-team)
-- [📄 License](#-license)
+- [Project Overview](#-project-overview)
+- [Design Objectives & Requirements](#-design-objectives--requirements)
+- [System Architecture](#️-system-architecture)
+- [Mechanical Design](#️-mechanical-design)
+- [Electronics Design](#-electronics-design)
+- [Control System & Software](#-control-system--software)
+- [Engineering Calculations](#-engineering-calculations)
+- [CAD Gallery](#️-cad-gallery)
+- [Simulation & Validation](#-simulation--validation)
+- [Final Prototype & Specifications](#-final-prototype--specifications)
+- [Results & Lessons Learned](#-results--lessons-learned)
+- [Challenges & Engineering Decisions](#-challenges--engineering-decisions)
+- [Future Improvements](#-future-improvements)
+- [Repository Structure](#-repository-structure)
+- [References](#-references)
+- [Team](#-team)
+- [License](#-license)
 
 ---
 
-# 📖 Project Overview
+## 📖 Project Overview
 
-## Background
+Sumo robotics combines mechanical engineering, embedded systems, electronics, and control theory to build robots capable of pushing opponents out of a circular arena while maintaining stability, traction, and responsiveness.
 
-Sumo robotics is a competitive field that combines **mechanical engineering**, **embedded systems**, **electronics**, and **control theory** to produce robots capable of pushing opponents outside a circular arena while maintaining stability, traction, and responsiveness.
+This project was developed for the **Mechatronics Design** course at **Modern Sciences and Arts University (MSA University)**. Rather than treating the build as a programming exercise alone, the team followed a full engineering design process — concept development, analytical calculations, CAD modeling, electronics integration, firmware development, simulation, manufacturing, and experimental testing — to produce a fully functional Bluetooth-controlled sumo robot.
 
-This project was developed as part of the **Mechatronics Design** course at **Modern Sciences and Arts University (MSA University)**. The objective was to design and manufacture a fully functional Bluetooth-controlled sumo robot while applying the complete engineering design process—from concept development and analytical calculations to CAD modeling, electronics integration, programming, simulation, manufacturing, and experimental testing.
+**Project summary:**
 
-Unlike many educational robotics projects that focus solely on programming, this project emphasizes multidisciplinary engineering by integrating mechanical design, power transmission, embedded programming, system modeling, and design validation into a single robotic platform.
+- **Controller:** ESP32, communicating wirelessly with a smartphone over Bluetooth
+- **Locomotion:** Differential drive using two independently controlled DC motors
+- **Chassis:** Low-profile wedge design that maximizes pushing capability
+- **Workflow:** Mechanical CAD (Inventor) → circuit design (Proteus/KiCad) → firmware (Arduino) → analytical modeling (MATLAB/Simulink) → physical assembly and testing
 
----
-
-## Project Summary
-
-The robot utilizes an **ESP32 microcontroller** as its primary controller, communicating wirelessly with a smartphone via Bluetooth. Differential drive locomotion enables precise maneuverability using two independently controlled DC motors, while a low-profile wedge chassis maximizes pushing capability during competition.
-
-The complete engineering workflow included:
-
-- Mechanical design using Autodesk Inventor
-- Differential-drive robot modeling
-- Embedded firmware development
-- Bluetooth communication
-- Electronic circuit design
-- Power system analysis
-- MATLAB & Simulink modeling
-- Proteus simulation
-- Physical assembly and testing
-
-The final prototype successfully demonstrated stable wireless control, efficient motor response, and competitive maneuverability while meeting the project's design objectives.
+The final prototype achieved stable wireless control, fast motor response, and competitive maneuverability, meeting all project design objectives.
 
 ---
 
-# 🎯 Design Objectives
+## 🎯 Design Objectives & Requirements
 
-The primary objective of this project was to design and manufacture a compact, reliable, and high-performance Bluetooth-controlled sumo robot capable of competing in a robotic sumo environment.
+The goal was to design and manufacture a compact, reliable, high-performance Bluetooth-controlled sumo robot. This translated into the following engineering targets:
 
-The engineering goals included:
-
-- Design a lightweight yet structurally rigid chassis.
-- Maximize pushing force while maintaining stability.
-- Reduce response delay during wireless control.
-- Develop an intuitive Bluetooth communication system.
-- Implement efficient differential-drive motion control.
-- Integrate all electronic components within a compact footprint.
-- Validate the design through simulation and experimental testing.
-- Apply engineering calculations throughout the design process.
-
----
-
-# 📋 Engineering Requirements
-
-The robot was designed according to the following engineering requirements.
-
-| Requirement | Target |
+| Requirement | Goal |
 |--------------|---------|
-| Stable Bluetooth Communication | ✅ Required |
-| High Pushing Force | ✅ Required |
-| Low Center of Gravity | ✅ Required |
-| Compact Dimensions | ✅ Required |
-| Fast Response Time | ✅ Required |
-| Reliable Differential Drive | ✅ Required |
-| Easy Maintenance | ✅ Required |
-| Robust Mechanical Structure | ✅ Required |
+| Bluetooth communication | Stable, low-latency link between phone and robot |
+| Pushing force | Maximized without sacrificing stability |
+| Center of gravity | Kept as low as possible |
+| Footprint | Compact, arena-appropriate dimensions |
+| Response time | Minimal delay between command and motion |
+| Drive system | Reliable differential-drive control |
+| Maintainability | Modular assembly for easy access/repair |
+| Structure | Robust enough to withstand collision loads |
 
-The final design was evaluated against these requirements throughout the development process to ensure that mechanical, electrical, and software subsystems operated as a unified mechatronic system.
+Every mechanical, electrical, and software decision in this project was evaluated against this table to keep the three subsystems working as one coherent mechatronic system.
 
 ---
 
-# 🏗️ System Architecture
+## 🏗️ System Architecture
 
-The robot follows a modular mechatronic architecture composed of four primary subsystems:
+The robot is organized into four subsystems that map directly onto the signal/power flow from operator to motion:
 
 ```text
- Smartphone
-      │
- Bluetooth
-      │
-    ESP32
-      │
-Motor Driver
-      │
- DC Motors
-      │      │
- Robot Motion
+Smartphone → Bluetooth → ESP32 → Motor Driver → DC Motors → Robot Motion
 ```
 
-### Mechanical Subsystem
+| Subsystem | Contents |
+|---|---|
+| **Mechanical** | Custom CAD chassis, low-profile wedge, differential-drive wheel layout, optimized weight distribution |
+| **Electrical** | ESP32 microcontroller, L298N motor driver, Li-ion battery pack, DC geared motors, Bluetooth module |
+| **Software** | Arduino firmware, Bluetooth protocol handling, differential-drive control logic, PWM motor control |
+| **Validation** | MATLAB calculations, Simulink modeling, Proteus circuit simulation, physical testing |
 
-- Custom CAD chassis
-- Low-profile wedge
-- Differential-drive wheel configuration
-- Optimized weight distribution
-
-### Electrical Subsystem
-
-- ESP32 microcontroller
-- Motor driver
-- Rechargeable battery pack
-- DC geared motors
-- Wireless Bluetooth communication
-
-### Software Subsystem
-
-- Arduino firmware
-- Bluetooth communication protocol
-- Differential-drive control logic
-- PWM motor control
-
-### Validation Subsystem
-
-- MATLAB calculations
-- Simulink modeling
-- Proteus simulation
-- Experimental testing
+> 💡 **Engineering focus:** mechanical design, electronics, embedded programming, simulation, and validation were developed together — not bolted on sequentially — to produce a balanced, competitive platform.
 
 ---
 
-> 💡 **Engineering Focus**
->
-> Rather than treating the robot as an electronics project alone, this work follows a complete mechatronic engineering workflow where mechanical design, electronics, embedded programming, simulation, and validation are developed together to achieve a balanced and competitive robotic platform.
+## ⚙️ Mechanical Design
 
----
+### Design Philosophy
 
-# ⚙️ Mechanical Design
+Every mechanical component was chosen or shaped around three priorities: maximize pushing capability, keep the center of gravity low, and minimize weight without sacrificing rigidity.
 
-## Design Philosophy
+### Chassis & Wedge
 
-The mechanical design of the robot was driven by three primary objectives:
+The chassis was modeled in **Autodesk Inventor** using a modular approach for easier manufacturing, assembly, and maintenance. Key considerations:
 
-- Maximize pushing capability
-- Maintain a low center of gravity
-- Minimize overall weight while preserving structural rigidity
+- Low-profile geometry that can slide underneath an opponent's chassis
+- Compact footprint for maneuverability
+- Symmetrical weight distribution
+- Easy access to internal electronics
+- Rigid construction to absorb impact loads
 
-Rather than designing only for aesthetics, every mechanical component was selected or designed to improve the robot's performance during sumo matches.
-
----
-
-## Chassis Design
-
-The chassis was designed in **Autodesk Inventor** using a modular approach that simplifies manufacturing, assembly, and maintenance.
-
-### Design Considerations
-
-- Low-profile geometry to slide underneath opponents.
-- Compact footprint for improved maneuverability.
-- Symmetrical weight distribution.
-- Easy access to electronics.
-- Rigid structure capable of withstanding impact loads.
+The front **wedge** — one of the most important parts on any sumo robot — is angled to lift the opponent's front wheels, reduce their traction, transfer pushing force efficiently into the chassis, and shield the robot from direct frontal impacts. The attack angle balances engagement against ground clearance during normal movement.
 
 <p align="center">
 <img src="images/cad-render.png" width="85%">
@@ -203,445 +125,164 @@ The chassis was designed in **Autodesk Inventor** using a modular approach that 
 
 > **Figure 1:** Complete CAD assembly of the Bluetooth-Controlled Sumo Robot.
 
----
-
-## Wedge Design
-
-One of the most important components in a sumo robot is the front wedge.
-
-The wedge was designed to:
-
-- Lift the opponent's front wheels.
-- Reduce the opponent's traction.
-- Transfer pushing force efficiently.
-- Prevent direct frontal collisions with the chassis.
-
-The attack angle was selected to maximize engagement while maintaining ground clearance during movement.
-
 <p align="center">
 <img src="images/front-view.png" width="70%">
 </p>
 
----
+### Wheel Configuration & Weight Distribution
 
-## Wheel Configuration
+The robot uses a **differential-drive** layout: two independently driven DC motors with high-traction wheels, plus one free-rotating caster wheel. This gives zero-radius turning, a simple control architecture, and reliable navigation inside the arena.
 
-The robot utilizes a **differential-drive** configuration consisting of:
-
-- Two independently driven DC motors
-- One free-rotating caster wheel
-- High-traction drive wheels
-
-This configuration offers:
-
-- Zero-radius turning
-- Simple control architecture
-- High maneuverability
-- Reliable navigation inside the sumo arena
+Weight distribution is just as critical as the drivetrain itself. The battery pack sits close to the drive wheels to increase normal force on the tires (improving traction and pushing force), and the heaviest components — motors and battery — are mounted as low as possible to keep the center of gravity down and improve stability during aggressive pushing.
 
 <p align="center">
 <img src="images/exploded-view.png" width="90%">
 </p>
 
----
-
-## Weight Distribution
-
-Weight distribution plays a critical role in sumo robotics.
-
-The battery pack was intentionally positioned close to the drive wheels to increase the normal force acting on the tires, thereby improving traction and maximizing the available pushing force.
-
-Heavy components such as the motors and battery were placed as low as possible to reduce the center of gravity and improve stability during aggressive pushing.
+> **Figure 2:** Exploded view of the mechanical assembly.
 
 ---
 
-## Mechanical Highlights
+## 🔌 Electronics Design
 
-- ✅ Low-profile wedge chassis
-- ✅ Modular mechanical assembly
-- ✅ Lightweight construction
-- ✅ Optimized center of gravity
-- ✅ High traction wheel placement
-- ✅ Compact mechanical layout
-
----
-
-# 🔌 Electronics Design
-
-The electronic system was designed to provide reliable wireless control while delivering sufficient power to the drive motors.
-
-The design consists of four major subsystems:
-
-- Control
-- Power
-- Motor Drive
-- Communication
-
----
-
-## System Components
+The electrical system covers four functions: control, power, motor drive, and communication.
 
 | Component | Function |
 |------------|----------|
-| ESP32 | Main controller |
-| L298N Motor Driver | Motor power control |
+| ESP32 | Main controller — reads Bluetooth input, generates PWM, coordinates drive logic |
+| L298N Motor Driver | Bidirectional, PWM-based dual H-bridge motor control |
 | DC Geared Motors | Robot propulsion |
 | Li-ion Battery Pack | Power supply |
-| Bluetooth | Wireless communication |
-
----
-
-## Electronic Architecture
+| Bluetooth Module | Wireless link to smartphone |
 
 ```text
-Battery
-   │
-   ▼
-L298N Motor Driver
-   ▲
-   │
-ESP32 Controller
-   ▲
-Bluetooth Communication
-   ▲
-Smartphone
+Smartphone → Bluetooth → ESP32 Controller → L298N Motor Driver → Battery-supplied Motors
 ```
 
----
+**ESP32:** chosen for its built-in Bluetooth, ample processing headroom, low power draw, multiple PWM outputs, and mature Arduino ecosystem support. It handles Bluetooth command parsing, PWM generation, motor direction control, and differential-drive coordination.
 
-## ESP32 Controller
+**Motor driver (L298N):** provides bidirectional control, PWM speed regulation, independent left/right channels, and high-current switching for both motors.
 
-The ESP32 serves as the central processing unit of the robot.
+**Power system:** a rechargeable Li-ion pack sized to deliver stable voltage and sufficient current under heavy motor load, including the high startup current draw typical of DC motors. Sizing was checked analytically before parts were ordered (see [Engineering Calculations](#-engineering-calculations)).
 
-Its responsibilities include:
-
-- Reading Bluetooth commands
-- Processing user input
-- Generating PWM signals
-- Controlling motor direction
-- Coordinating differential-drive movement
-
-The ESP32 was selected because it provides:
-
-- Built-in Bluetooth
-- High processing performance
-- Low power consumption
-- Multiple PWM outputs
-- Excellent Arduino ecosystem support
-
----
-
-## Motor Driver
-
-The robot uses an **L298N dual H-Bridge motor driver**.
-
-Its primary functions include:
-
-- Bidirectional motor control
-- PWM speed regulation
-- Independent left/right motor control
-- High-current switching
-
----
-
-## Power System
-
-The robot is powered by a rechargeable Li-ion battery pack.
-
-The power system was designed to provide:
-
-- Stable voltage
-- High current capability
-- Long operating duration
-- Reliable performance under heavy motor loads
-
-Power calculations were performed during the design phase to verify that the selected battery could safely support the expected current consumption.
-
----
-
-## Circuit Design
-
-The electrical circuit was first developed and validated using **Proteus**, allowing verification of wiring and motor control logic before physical assembly.
-
-The PCB and schematic were then organized using **KiCad**, ensuring a clean and maintainable electrical design.
+**Circuit design:** the control circuit was first built and verified in **Proteus** to validate wiring and motor-control logic, then the schematic and PCB layout were finalized in **KiCad**.
 
 <p align="center">
 <img src="images/schematic.png" width="85%">
 </p>
 
-> **Figure 2:** Electrical schematic of the control system.
+> **Figure 3:** Electrical schematic of the control system.
 
 ---
 
-# 🧠 Control System
+## 🧠 Control System & Software
 
-The robot utilizes a **Bluetooth-based differential-drive control system**.
+### Differential Drive Logic
 
-The operator sends movement commands from a smartphone application.
+The operator sends movement commands from a smartphone app over Bluetooth. The ESP32 parses each command and generates the matching PWM signals for the left and right motors:
 
-These commands are transmitted wirelessly to the ESP32, which interprets the incoming data and generates the appropriate PWM signals for each motor.
-
----
-
-## Differential Drive
-
-Robot motion is achieved by independently controlling the left and right motors.
-
-| Left Motor | Right Motor | Motion |
+| Left Motor | Right Motor | Resulting Motion |
 |------------|-------------|---------|
 | Forward | Forward | Forward |
 | Reverse | Reverse | Backward |
-| Forward | Reverse | Rotate Right |
-| Reverse | Forward | Rotate Left |
+| Forward | Reverse | Rotate right |
+| Reverse | Forward | Rotate left |
 | Stop | Stop | Stop |
 
-This control strategy enables smooth turning, rapid maneuverability, and precise positioning inside the sumo arena.
+### Firmware Architecture
 
----
-
-## Motion Flow
+Built in the **Arduino IDE** with a modular structure for readability, debugging, and future expansion:
 
 ```text
-Smartphone
-
-↓
-
-Bluetooth
-
-↓
-
-ESP32
-
-↓
-
-Motor Driver
-
-↓
-
-DC Motors
-
-↓
-
-Robot Motion
+Initialize hardware → Connect Bluetooth → Receive command →
+Process input → Generate PWM → Drive motors → Wait for next command
 ```
 
----
-
-# 💻 Software Implementation
-
-The firmware was developed using the **Arduino IDE**.
-
-The software architecture follows a modular design to improve readability, debugging, and future expansion.
-
-The main software modules include:
-
-- Bluetooth communication
-- Command processing
-- Motor control
-- PWM generation
-- Safety handling
+**Key features:**
+- Wireless Bluetooth operation with low-latency response
+- Differential-drive control algorithm
+- PWM-based motor speed control
+- Non-blocking firmware structure to keep communication responsive
+- Modular code, ready for autonomous-navigation features later
 
 ---
 
-## Software Workflow
+## 📐 Engineering Calculations
 
-```text
-Initialize Hardware
-
-↓
-
-Connect Bluetooth
-
-↓
-
-Receive Command
-
-↓
-
-Process Input
-
-↓
-
-Generate PWM
-
-↓
-
-Drive Motors
-
-↓
-
-Wait for Next Command
-```
-
----
-
-## Key Features
-
-- Wireless Bluetooth operation
-- Differential-drive algorithm
-- PWM motor speed control
-- Low-latency response
-- Modular firmware architecture
-- Expandable for autonomous navigation
-
----
-
-# 📐 Engineering Calculations
-
-Engineering calculations were performed before manufacturing to verify that the design would satisfy the desired performance requirements.
-
-The analytical work included:
+Before any manufacturing began, the team ran the analytical work needed to size components correctly rather than relying on trial and error:
 
 - Motor torque estimation
-- Pushing force analysis
+- Pushing-force analysis
 - Robot velocity estimation
-- Battery capacity calculations
-- Power consumption estimation
+- Battery capacity and power-consumption calculations
 - Differential-drive kinematics
 
-These calculations guided the selection of motors, battery capacity, gear ratio, and overall mechanical configuration.
-
-Detailed derivations and mathematical analysis are available in the accompanying project report located in the **docs/** directory.
-
-> Engineering decisions throughout this project were supported by analytical calculations rather than trial-and-error, ensuring that the final design achieved an effective balance between performance, efficiency, and reliability.
-
----
-# 🖼️ CAD Gallery
-
-The robot was fully modeled in **Autodesk Inventor** before manufacturing. The CAD stage enabled verification of component placement, weight distribution, assembly constraints, and manufacturability before any physical fabrication began.
+These results directly drove the choice of motors, gear ratio, battery capacity, and overall mechanical layout. Full derivations are in **[`docs/Project_Report.pdf`](docs/Project_Report.pdf)**.
 
 ---
 
-## Complete Assembly
+## 🖼️ CAD Gallery
+
+The full robot was modeled in **Autodesk Inventor** before any physical fabrication, allowing the team to check component placement, weight distribution, assembly constraints, and manufacturability up front.
 
 <p align="center">
 <img src="images/cad-render.png" width="90%">
 </p>
 
-> **Figure 3:** Complete CAD assembly of the Bluetooth-Controlled Sumo Robot.
-
----
-
-## Exploded Assembly
-
-<p align="center">
-<img src="images/exploded-view.png" width="90%">
-</p>
-
-> **Figure 4:** Exploded view showing the modular mechanical design.
-
----
-
-## Chassis Design
+> **Figure 4:** Complete CAD assembly.
 
 <p align="center">
 <img src="images/chassis.png" width="85%">
 </p>
 
-The chassis was designed to provide:
-
-- High structural rigidity
-- Easy maintenance
-- Efficient component packaging
-- Low overall weight
-- Optimized center of gravity
-
----
-
-## Internal Layout
+> **Figure 5:** Chassis design — built for rigidity, low weight, and easy maintenance.
 
 <p align="center">
 <img src="images/internal-layout.png" width="85%">
 </p>
 
-The internal arrangement of the electronics was carefully planned to:
-
-- Reduce cable clutter
-- Improve accessibility
-- Protect sensitive components
-- Maintain balanced weight distribution
+> **Figure 6:** Internal electronics layout — planned to reduce cable clutter, improve accessibility, and keep weight balanced.
 
 ---
 
-# 🧪 Simulation & Validation
+## 🧪 Simulation & Validation
 
-Before manufacturing the prototype, several stages of simulation and engineering validation were completed to verify the performance of both the mechanical and electrical systems.
+### MATLAB & Simulink
 
----
-
-## MATLAB & Simulink
-
-MATLAB and Simulink were used to model the robot's dynamic behavior and validate key engineering calculations.
-
-The simulation focused on:
-
-- Differential-drive kinematics
-- Motion response
-- Velocity estimation
-- Control verification
+Used to model the robot's dynamic behavior — differential-drive kinematics, motion response, and velocity estimation — and to cross-check the hand calculations above.
 
 <p align="center">
 <img src="images/simulink.png" width="90%">
 </p>
 
-> **Figure 5:** Simulink model used for system analysis.
+> **Figure 7:** Simulink model used for system analysis.
 
----
+### Proteus Simulation
 
-## Proteus Simulation
-
-The electronic control system was validated using **Proteus** before hardware assembly.
-
-Simulation objectives included:
-
-- Motor driver verification
-- ESP32 control logic
-- Circuit validation
-- Wiring inspection
+The electronic control system (motor driver behavior, ESP32 control logic, wiring) was validated in **Proteus** before any hardware was assembled, catching circuit issues early and reducing rework.
 
 <p align="center">
 <img src="images/proteus.png" width="90%">
 </p>
 
-> **Figure 6:** Proteus simulation of the electronic system.
+> **Figure 8:** Proteus simulation of the electronic system.
 
 ---
 
-## Engineering Validation
+## 🤖 Final Prototype & Specifications
 
-The design process included analytical validation through:
-
-- Motor torque calculations
-- Battery sizing
-- Push force estimation
-- Speed estimation
-- Power consumption analysis
-- Differential-drive equations
-
-Performing these calculations before manufacturing significantly reduced development risk and ensured that the selected hardware met the required performance targets.
-
----
-
-# 🤖 Final Prototype
-
-After completing the design, simulation, and validation stages, the robot was manufactured and assembled into a fully functional prototype.
-
-The prototype successfully integrated all mechanical, electrical, and software subsystems into a compact and competitive robotic platform.
+After design, simulation, and validation were complete, the robot was manufactured and assembled into a fully functional prototype integrating all mechanical, electrical, and software subsystems.
 
 <p align="center">
 <img src="images/robot.jpg" width="80%">
 </p>
 
-> **Figure 7:** Final assembled robot.
-
----
-
-## Key Specifications
+> **Figure 9:** Final assembled robot.
 
 | Specification | Value |
 |--------------|------:|
 | Controller | ESP32 |
-| Drive System | Differential Drive |
+| Drive System | Differential drive |
 | Communication | Bluetooth |
 | Battery | Li-ion |
 | Motor Driver | L298N |
@@ -651,51 +292,23 @@ The prototype successfully integrated all mechanical, electrical, and software s
 
 ---
 
-# 📊 Results & Discussion
+## 📊 Results & Lessons Learned
 
-The completed robot met the primary objectives established during the design phase.
+### Achievements
 
-## Achievements
+- ✅ Stable Bluetooth communication with low latency
+- ✅ Responsive, stable differential-drive motion
+- ✅ Compact, lightweight chassis with good traction
+- ✅ Reliable electronic integration under motor load
+- ✅ Simulation results consistent with physical testing
 
-- ✅ Successful Bluetooth communication
-- ✅ Stable differential-drive motion
-- ✅ Responsive motor control
-- ✅ Compact mechanical layout
-- ✅ Lightweight chassis
-- ✅ Reliable electronic integration
-- ✅ Successful simulation validation
-- ✅ Functional physical prototype
+### Lessons Learned
 
----
-
-## Performance Evaluation
-
-The final design demonstrated:
-
-- Fast wireless communication
-- Stable steering performance
-- Good maneuverability
-- Efficient power utilization
-- High traction
-- Reliable embedded control
-
-The combination of analytical calculations, simulation, and experimental testing contributed to a balanced design capable of operating effectively in a competitive sumo environment.
-
----
-
-## Lessons Learned
-
-Throughout the project, several important engineering principles were reinforced:
-
-- Mechanical and electrical systems must be designed together.
-- Weight distribution has a significant impact on robot performance.
-- Simulation can greatly reduce design errors before manufacturing.
-- Modular software architecture simplifies debugging and future upgrades.
-- Early engineering calculations improve design reliability and reduce development time.
-
----
-
-## Project Showcase
+- Mechanical and electrical systems need to be designed together, not in isolation — chassis geometry directly affects power and traction needs.
+- Weight distribution has an outsized effect on pushing performance and stability.
+- Simulating before manufacturing catches design errors early and saves rework.
+- A modular firmware architecture made debugging and later changes much easier.
+- Doing the analytical calculations up front, rather than after building, improved reliability and cut development time.
 
 <p align="center">
 
@@ -707,125 +320,36 @@ Throughout the project, several important engineering principles were reinforced
 
 ---
 
-> **Project Outcome**
->
-> This project demonstrates the successful application of mechanical engineering, embedded systems, electronics, control theory, CAD design, and simulation to develop a complete mechatronic system. Rather than focusing on a single discipline, the project highlights the integration of multiple engineering domains to solve a real-world robotics challenge.
+## 🚧 Challenges & Engineering Decisions
 
----
-# 🚧 Challenges & Engineering Decisions
+**Weight vs. traction:** more weight improves traction and pushing force but increases demands on motors and battery. The team kept the chassis lightweight overall while concentrating mass directly above the drive wheels — getting traction benefits without the full weight penalty.
 
-Every engineering project presents design trade-offs. Throughout the development of this robot, several technical challenges were encountered that required careful analysis and engineering judgment.
+**Center of gravity:** an elevated CG hurts stability during pushing contests. Mounting the battery and motors low and distributing mass symmetrically kept the robot stable during aggressive maneuvers.
 
----
+**Startup current:** DC motors draw far more current at startup than during steady-state operation, so the battery and motor driver had to be sized for peak draw, not average draw, to guarantee reliable starts and stable voltage.
 
-## Mechanical Challenges
+**Bluetooth responsiveness:** keeping the link responsive while continuously updating motor outputs required non-blocking firmware that avoids delays in the main control loop.
 
-### Weight vs. Traction
-
-Increasing the robot's weight improves traction and pushing force but also places greater demands on the motors and battery.
-
-To achieve the best balance, the chassis was designed to remain lightweight while concentrating the heaviest components directly above the drive wheels.
+**Key decisions:**
+- Differential drive chosen for simplicity and maneuverability over more complex steering systems
+- ESP32 chosen specifically for integrated Bluetooth (avoiding a separate wireless module)
+- CAD-first workflow adopted to catch manufacturing issues before cutting material
+- Simulation completed before assembly to validate behavior ahead of physical testing
 
 ---
 
-### Center of Gravity
+## 🚀 Future Improvements
 
-An elevated center of gravity can reduce stability during pushing contests.
-
-To address this issue:
-
-- The battery pack was positioned as low as possible.
-- The motors were mounted close to the base.
-- Heavy components were distributed symmetrically.
-
-This improved stability during aggressive maneuvers.
+| Area | Planned Enhancements |
+|---|---|
+| **Mechanical** | Aluminum/carbon-fiber chassis, improved wheel materials, adjustable wedge geometry, further weight reduction |
+| **Electronics** | Custom PCB, higher-efficiency motor driver, battery monitoring, integrated voltage regulation |
+| **Software** | PID speed control, closed-loop motor feedback, automatic braking, configurable drive modes |
+| **Autonomy** | Ultrasonic/IR sensors, computer vision, line detection, obstacle avoidance, ROS 2 integration, autonomous opponent detection |
 
 ---
 
-## Electrical Challenges
-
-The drive motors draw significantly higher current during startup than during normal operation.
-
-Proper battery selection and motor driver sizing were therefore essential to ensure:
-
-- Reliable startup
-- Stable voltage
-- Continuous operation
-- Safe power delivery
-
----
-
-## Software Challenges
-
-Bluetooth communication had to remain responsive while continuously updating motor outputs.
-
-The firmware was structured to:
-
-- Minimize communication latency
-- Prevent blocking code
-- Maintain smooth motor control
-- Allow future feature expansion
-
----
-
-## Engineering Decisions
-
-Several important engineering decisions shaped the final design:
-
-- Differential drive selected for simplicity and maneuverability.
-- ESP32 chosen for integrated Bluetooth capability.
-- Modular chassis designed for easy maintenance.
-- CAD-first workflow adopted to reduce manufacturing errors.
-- Simulation completed before physical assembly to validate system behavior.
-
----
-
-# 🚀 Future Improvements
-
-Although the current robot satisfies the project objectives, several enhancements could significantly improve its performance.
-
-### Mechanical
-
-- Aluminum or carbon-fiber chassis
-- Improved wheel materials
-- Adjustable wedge geometry
-- Reduced overall weight
-
----
-
-### Electronics
-
-- Custom PCB
-- Higher-efficiency motor driver
-- Battery monitoring system
-- Integrated voltage regulation
-
----
-
-### Software
-
-- PID speed control
-- Closed-loop motor feedback
-- Automatic braking
-- Configurable drive modes
-
----
-
-### Robotics & AI
-
-Future versions of the robot could transition from manual operation to autonomous behavior through the integration of:
-
-- Ultrasonic sensors
-- Infrared sensors
-- Computer vision
-- Line detection
-- Obstacle avoidance
-- ROS 2
-- Autonomous opponent detection
-
----
-
-# 📁 Repository Structure
+## 📁 Repository Structure
 
 ```text
 bluetooth-controlled-sumo-robot
@@ -852,43 +376,32 @@ bluetooth-controlled-sumo-robot
     └── Project_Report.pdf
 ```
 
----
-
-# 📂 Project Files
-
-The repository contains all resources required to understand and reproduce the project.
-
 | Directory | Description |
 |-----------|-------------|
 | `cad/` | Autodesk Inventor assemblies, parts, and drawings |
 | `electronics/` | Schematics, PCB files, and wiring diagrams |
 | `firmware/` | ESP32 source code |
 | `images/` | CAD renders, prototype photos, and diagrams |
-| `docs/` | Project report and supporting documentation |
+| `docs/` | Project report and supporting calculations |
 
 ---
 
-# 📚 References
-
-The development of this project was supported by technical documentation, engineering references, and software manuals.
+## 📚 References
 
 - ESP32 Technical Documentation
 - Arduino Documentation
 - Autodesk Inventor Documentation
-- MATLAB Documentation
-- Simulink Documentation
+- MATLAB & Simulink Documentation
 - KiCad Documentation
 - Proteus Documentation
 
-Additional analytical calculations and design methodology are documented in the accompanying project report.
+Full derivations and design methodology are documented in **[`docs/Project_Report.pdf`](docs/Project_Report.pdf)**.
 
 ---
 
-# 👥 Team
+## 👥 Team
 
-This project was completed as part of the **Mechatronics Design** course at **Modern Sciences and Arts University (MSA University)**.
-
-### Team Members
+Developed for the **Mechatronics Design** course at **Modern Sciences and Arts University (MSA University)**.
 
 - Mohamed Samer
 - Ahmed Ibrahim
@@ -896,39 +409,28 @@ This project was completed as part of the **Mechatronics Design** course at **Mo
 - Omar Mahmoud
 - Youssef Mohamed
 
----
-
-# 🙏 Acknowledgements
-
-The team would like to thank the faculty members and teaching assistants of the Mechatronics Engineering Department at **MSA University** for their guidance and continuous support throughout the development of this project.
+**Acknowledgements:** Thanks to the faculty and teaching assistants of the Mechatronics Engineering Department at MSA University for their guidance throughout this project.
 
 ---
 
-# 📄 License
+## 📄 License
 
-This project is released under the **MIT License**.
-
-See the [LICENSE](LICENSE) file for more information.
+Released under the **MIT License** — see [LICENSE](LICENSE) for details.
 
 ---
 
-# ⭐ Support
+## ⭐ Support
 
-If you found this project interesting or helpful:
+If this project was useful or interesting:
 
 - ⭐ Star this repository
-- 🍴 Fork the project
-- 💡 Share your feedback
-- 🤝 Connect with me on LinkedIn
-
----
+- 🍴 Fork it and build your own version
+- 💡 Open an issue with feedback or questions
+- 🤝 Connect on LinkedIn
 
 <p align="center">
 
 ### Built with ❤️ by Mohamed Samer
-
-**Mechatronics Engineering Student**
-
-*Modern Sciences and Arts University (MSA University)*
+**Mechatronics Engineering Student** · Modern Sciences and Arts University (MSA University)
 
 </p>
