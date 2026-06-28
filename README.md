@@ -404,19 +404,7 @@ Full derivations and design methodology are documented in **[`docs/Project_Repor
 
 ---
 
-## 👥 Team
 
-Developed for the **Mechatronics Design** course at **Modern Sciences and Arts University (MSA University)**.
-
-- Mohamed Samer
-- Ahmed Ibrahim
-- Ahmed Hesham
-- Omar Mahmoud
-- Youssef Mohamed
-
-**Acknowledgements:** Thanks to the faculty and teaching assistants of the Mechatronics Engineering Department at MSA University for their guidance throughout this project.
-
----
 
 ## 📄 License
 
