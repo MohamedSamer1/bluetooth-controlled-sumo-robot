@@ -506,3 +506,209 @@ Detailed derivations and mathematical analysis are available in the accompanying
 > Engineering decisions throughout this project were supported by analytical calculations rather than trial-and-error, ensuring that the final design achieved an effective balance between performance, efficiency, and reliability.
 
 ---
+# 🖼️ CAD Gallery
+
+The robot was fully modeled in **Autodesk Inventor** before manufacturing. The CAD stage enabled verification of component placement, weight distribution, assembly constraints, and manufacturability before any physical fabrication began.
+
+---
+
+## Complete Assembly
+
+<p align="center">
+<img src="images/cad-render.png" width="90%">
+</p>
+
+> **Figure 3:** Complete CAD assembly of the Bluetooth-Controlled Sumo Robot.
+
+---
+
+## Exploded Assembly
+
+<p align="center">
+<img src="images/exploded-view.png" width="90%">
+</p>
+
+> **Figure 4:** Exploded view showing the modular mechanical design.
+
+---
+
+## Chassis Design
+
+<p align="center">
+<img src="images/chassis.png" width="85%">
+</p>
+
+The chassis was designed to provide:
+
+- High structural rigidity
+- Easy maintenance
+- Efficient component packaging
+- Low overall weight
+- Optimized center of gravity
+
+---
+
+## Internal Layout
+
+<p align="center">
+<img src="images/internal-layout.png" width="85%">
+</p>
+
+The internal arrangement of the electronics was carefully planned to:
+
+- Reduce cable clutter
+- Improve accessibility
+- Protect sensitive components
+- Maintain balanced weight distribution
+
+---
+
+# 🧪 Simulation & Validation
+
+Before manufacturing the prototype, several stages of simulation and engineering validation were completed to verify the performance of both the mechanical and electrical systems.
+
+---
+
+## MATLAB & Simulink
+
+MATLAB and Simulink were used to model the robot's dynamic behavior and validate key engineering calculations.
+
+The simulation focused on:
+
+- Differential-drive kinematics
+- Motion response
+- Velocity estimation
+- Control verification
+
+<p align="center">
+<img src="images/simulink.png" width="90%">
+</p>
+
+> **Figure 5:** Simulink model used for system analysis.
+
+---
+
+## Proteus Simulation
+
+The electronic control system was validated using **Proteus** before hardware assembly.
+
+Simulation objectives included:
+
+- Motor driver verification
+- ESP32 control logic
+- Circuit validation
+- Wiring inspection
+
+<p align="center">
+<img src="images/proteus.png" width="90%">
+</p>
+
+> **Figure 6:** Proteus simulation of the electronic system.
+
+---
+
+## Engineering Validation
+
+The design process included analytical validation through:
+
+- Motor torque calculations
+- Battery sizing
+- Push force estimation
+- Speed estimation
+- Power consumption analysis
+- Differential-drive equations
+
+Performing these calculations before manufacturing significantly reduced development risk and ensured that the selected hardware met the required performance targets.
+
+---
+
+# 🤖 Final Prototype
+
+After completing the design, simulation, and validation stages, the robot was manufactured and assembled into a fully functional prototype.
+
+The prototype successfully integrated all mechanical, electrical, and software subsystems into a compact and competitive robotic platform.
+
+<p align="center">
+<img src="images/robot.jpg" width="80%">
+</p>
+
+> **Figure 7:** Final assembled robot.
+
+---
+
+## Key Specifications
+
+| Specification | Value |
+|--------------|------:|
+| Controller | ESP32 |
+| Drive System | Differential Drive |
+| Communication | Bluetooth |
+| Battery | Li-ion |
+| Motor Driver | L298N |
+| CAD Software | Autodesk Inventor |
+| Simulation | MATLAB / Simulink |
+| Circuit Validation | Proteus |
+
+---
+
+# 📊 Results & Discussion
+
+The completed robot met the primary objectives established during the design phase.
+
+## Achievements
+
+- ✅ Successful Bluetooth communication
+- ✅ Stable differential-drive motion
+- ✅ Responsive motor control
+- ✅ Compact mechanical layout
+- ✅ Lightweight chassis
+- ✅ Reliable electronic integration
+- ✅ Successful simulation validation
+- ✅ Functional physical prototype
+
+---
+
+## Performance Evaluation
+
+The final design demonstrated:
+
+- Fast wireless communication
+- Stable steering performance
+- Good maneuverability
+- Efficient power utilization
+- High traction
+- Reliable embedded control
+
+The combination of analytical calculations, simulation, and experimental testing contributed to a balanced design capable of operating effectively in a competitive sumo environment.
+
+---
+
+## Lessons Learned
+
+Throughout the project, several important engineering principles were reinforced:
+
+- Mechanical and electrical systems must be designed together.
+- Weight distribution has a significant impact on robot performance.
+- Simulation can greatly reduce design errors before manufacturing.
+- Modular software architecture simplifies debugging and future upgrades.
+- Early engineering calculations improve design reliability and reduce development time.
+
+---
+
+## Project Showcase
+
+<p align="center">
+
+| CAD Design | Prototype |
+|------------|-----------|
+| <img src="images/cad-render.png" width="350"> | <img src="images/robot.jpg" width="350"> |
+
+</p>
+
+---
+
+> **Project Outcome**
+>
+> This project demonstrates the successful application of mechanical engineering, embedded systems, electronics, control theory, CAD design, and simulation to develop a complete mechatronic system. Rather than focusing on a single discipline, the project highlights the integration of multiple engineering domains to solve a real-world robotics challenge.
+
+---
