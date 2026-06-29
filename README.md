@@ -441,7 +441,8 @@ If this project was useful or interesting:
 <p align="center">
 
 ### Built with ❤️ by Mohamed Samer
-- **Mechatronics Engineering Student** · Modern Sciences and Arts University (MSA University)
-- https://mohamed-samer.vercel.app/
+ **Mechatronics Engineering Student** · Modern Sciences and Arts University (MSA University)
+ 
+ https://mohamed-samer.vercel.app/
 
 </p>
